@@ -125,9 +125,9 @@
   - [ ] `.env.example` առանց արժեքների
 - [ ] **Աուտենտիֆիկացիա.**
   - [ ] Գաղտնաբառերը hash արված (argon2)
-  - [ ] JWT ճիշտ կարգավորված է
-  - [ ] Access token կարճ (15m)
-  - [ ] Refresh token ԲԴ-ում
+  - [ ] Provider-ը և session strategy-ն համապատասխանում են TECH_CARD-ին
+  - [ ] Session/token TTL-ը, rotation-ը և invalidation-ը կարգավորված են
+  - [ ] Logout-ից հետո session/token-ը այլևս վավեր չէ
 - [ ] **Աուտորիզացիա.**
   - [ ] RBAC իրականացված է
   - [ ] Guards-ը ստուգում են իրավունքները
@@ -138,7 +138,7 @@
   - [ ] XSS պաշտպանություն (sanitization)
   - [ ] CSRF պաշտպանություն
   - [ ] CORS ճիշտ կարգավորված է
-- [ ] **Cookies.**
+- [ ] **Cookies (եթե cookie-based auth է).**
   - [ ] `httpOnly: true`
   - [ ] `secure: true`
   - [ ] `sameSite: 'strict'`

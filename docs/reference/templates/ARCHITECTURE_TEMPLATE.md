@@ -149,9 +149,9 @@
 ## 🔐 ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ
 
 ### Ինքնություն հաստատում
-- Մեթոդ. [JWT / Sessions]
-- Պահպանում. [httpOnly cookies]
-- Կյանքի տևողություն. [Access: 15m, Refresh: 7d]
+- Մեթոդ. [Database sessions / JWT / այլ]
+- Փոխանցում և պահպանում. [httpOnly cookie / Authorization header / այլ]
+- Կյանքի տևողություն և անվավերացում. [սահմանել ընտրված ստրատեգիայի համար]
 
 ### Ինքնորոշում
 - Մոդել. RBAC (Role-Based Access Control)

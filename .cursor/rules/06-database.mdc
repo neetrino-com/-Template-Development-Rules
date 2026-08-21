@@ -24,7 +24,22 @@ alwaysApply: false
 
 - Use connection pooling when required by the runtime and provider; tune limits from measured workload and provider guidance.
 - Separate runtime credentials from migration/owner credentials. Runtime code must use least-privilege credentials and must not receive schema-owner access.
+- Canonical names: `DATABASE_URL` = least-privilege runtime; `DIRECT_URL` = privileged migration connection. If the tool only reads `DATABASE_URL`, the migration job may substitute `DIRECT_URL` inside that process only.
 - Require encrypted database connections in production when supported by the provider.
+
+## Environment boundary
+
+- Local and developer `.env` files point only at local/dev databases. Production URLs stay in the deploy secret store, never in Git or a laptop env used for daily work.
+- Preview/staging never receive production credentials. Each environment has its own database and credentials.
+- Do not run production migrations from a developer machine except a documented emergency or one-time baseline with explicit confirmation.
+- Runtime, request handlers, Serverless/Edge startup, and `next build` must not apply migrations. Autoscaled instances are not migration owners.
+
+## Production migration command
+
+- One explicit, non-interactive, idempotent command, typically `db:migrate:deploy`. It applies only Git-committed migration history, exits non-zero on failure, and uses the tool's lock or equivalent against concurrent runs.
+- Prisma production: `prisma migrate deploy`. Never automate `prisma migrate dev`, `prisma db push`, or `prisma migrate reset` against production.
+- One migration job per database per release. If API, worker, and scheduler share a database, appoint a single job owner.
+- Deploy order: exact commit → build artifact → one migration job → only then deploy/promote the app. Failure blocks rollout; the previous app version stays active.
 
 ## Least privilege
 
@@ -44,7 +59,8 @@ Defence-in-depth with app-level timeouts in `14-ops.mdc`.
 
 ## Migration boundary
 
-- Use [`safe-database-migration`](../../.agents/skills/safe-database-migration/SKILL.md) for the procedural workflow, risk classification, generated SQL review, and environment validation.
+- Use [`safe-database-migration`](../../.agents/skills/safe-database-migration/SKILL.md) for schema-change planning, risk classification, generated SQL review, and local validation.
+- Use [`setup-production-migrations`](../../.agents/skills/setup-production-migrations/SKILL.md) to add or audit the migrate-on-deploy job. An automated job is not automatic approval of destructive SQL.
 - Do not execute a production migration without explicit authorization.
 - Prefer forward fixes; use framework-specific migration resolution commands only when their documented preconditions are satisfied.
 
@@ -52,5 +68,7 @@ Defence-in-depth with app-level timeouts in `14-ops.mdc`.
 
 - [ ] Runtime credentials have least privilege
 - [ ] Migration credentials are absent from runtime configuration
+- [ ] Local env does not use production URLs
+- [ ] Production migrations run from a deploy job, not app startup or a laptop
 - [ ] Pooling and timeouts match the selected provider and workload
 - [ ] No secrets in repo; connection strings in env only

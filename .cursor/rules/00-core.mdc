@@ -23,6 +23,7 @@ Understand the ask → inspect existing code → propose for large/risky changes
 - **Prod:** `console.log` — use logger.
 - **Dead:** commented-out code — remove.
 - **Secrets** in code/commits — env only.
+- **Prod DB:** production URLs do not belong in local `.env`; do not run production migrations from a developer machine.
 - **SQL:** no string-concatenated user input; parameterized / prepared only.
 - **eval** and similar — never.
 - **CORS/CSRF off** without explicit approval.

@@ -81,6 +81,8 @@
 
 - [ ] Prisma սխեման արդի է
 - [ ] Միգրացիաներ աշխատում են (up/down)
+- [ ] Լոկալ `.env`-ը չի օգտագործում Production database
+- [ ] Production migrations-ը աշխատում են deploy job-ով (`db:migrate:deploy`), ոչ startup-ից և ոչ նոութբուքից
 - [ ] Ինդեքսներ հաճախակի հարցումների համար
 - [ ] N+1 խնդիրներ չկան (`include` օգտագործվում է)
 - [ ] Transaction-ներ կապված գործողությունների համար
@@ -262,6 +264,8 @@
   - [ ] Staging environment
   - [ ] Production deploy
   - [ ] Database migrations
+    - [ ] Մի job exact commit-ից. failure-ը կանգնեցնում է rollout-ը
+    - [ ] `DIRECT_URL` միայն migration job-ում, ոչ runtime-ում
 - [ ] **Feature Flags (եթե կան).**
   - [ ] Փաստաթղթավորված են
   - [ ] Kill switch-ը աշխատում է
@@ -541,6 +545,8 @@
 - [ ] Начальная схема создана
 - [ ] Neon подключён (если используется)
 - [ ] `app_user` создан (см. 06-database)
+- [ ] Локальный `.env` не указывает на production
+- [ ] Production migrations запускаются deploy job-ом, не с ноутбука
 
 ## Хранилище файлов
 - [ ] Cloudflare R2 подключён (env vars заполнены)

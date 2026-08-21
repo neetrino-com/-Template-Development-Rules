@@ -74,6 +74,7 @@
 | 4.8 | Seed data | պետք չէ / prisma db seed | ⬜ | dev/test-ի համար |
 | 4.9 | Cache (Redis) | պետք չէ / Upstash Redis | ⬜ | |
 | 4.10 | Հերթեր | պետք չէ / BullMQ + Redis | ⬜ | |
+| 4.11 | Production migrations | CI job / Cloud Run Job / Coolify migrator | ⬜ | local-ը չի օգտագործում prod DB |
 
 ---
 
@@ -133,6 +134,7 @@
 | 8.8 | Շրջակա միջավայրեր | միայն prod / dev + prod / dev + staging + prod | ⬜ | Neon branches, Vercel env |
 | 8.9 | Դոմեն | Vercel ավտո / անհատական դոմեն | ⬜ | ազդում է CORS, AUTH_URL-ի վրա |
 | 8.10 | ԲԴ բեքափներ | Neon auto (PITR) / լրացուցիչ | ⬜ | |
+| 8.11 | Migration job | GitHub Actions / Cloud Run Job / Coolify one-shot | ⬜ | `DIRECT_URL` միայն job-ում |
 
 ---
 
@@ -209,7 +211,7 @@
 |---|----------|---------|
 | 12.13 | Production դեպլոյը աշխատում է | ⬜ |
 | 12.14 | Environment variables հոսթինգում կարգավորված | ⬜ |
-| 12.15 | Միգրացիաներ կիրառված production-ում | ⬜ |
+| 12.15 | Production migrations-ը կիրառվում են deploy job-ով, ոչ նոութբուքից | ⬜ |
 | 12.16 | Դոմեն կարգավորված (եթե անհատական) | ⬜ |
 | 12.17 | SSL-ը աշխատում է | ⬜ |
 

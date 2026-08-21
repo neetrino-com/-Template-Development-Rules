@@ -18,7 +18,7 @@ Use this workflow for a new project or an explicit onboarding restart. Do not ru
 7. **Initialize the project** — scaffold the agreed application with the approved package manager and framework, create `.env.example` without secrets, and establish the minimal documentation set.
 8. **Configure the quality baseline** — set up the agreed checks and hooks according to [CI/CD rules](../../../.cursor/rules/17-cicd.mdc) and the [quality CI example](../../../docs/reference/workflows/ci-quality.yml.example).
 9. **Plan development** — split delivery into phases, track work in `docs/PROGRESS.md`, follow the Git rules, and use the [project quality checklist](../../../docs/reference/Check/Quality/project-quality-checklist.md) when validating milestones.
-10. **Prepare release** — perform the final TECH_CARD and quality review, configure deployment environment variables, apply migrations safely, and verify monitoring according to [ops and reliability rules](../../../.cursor/rules/14-ops.mdc).
+10. **Prepare release** — perform the final TECH_CARD and quality review, configure deployment environment variables, set up the production migration job with [`setup-production-migrations`](../setup-production-migrations/SKILL.md) so local development never uses the production database, and verify monitoring according to [ops and reliability rules](../../../.cursor/rules/14-ops.mdc). Do not apply production migrations from a local machine.
 
 ## Verification
 
@@ -34,3 +34,4 @@ Report confirmed decisions, unresolved approvals, created or updated project doc
 - Detailed layouts and constraints: [`references/project-sizes/`](references/project-sizes/).
 - Long document templates: [`docs/reference/templates/`](../../../docs/reference/templates/).
 - Permanent engineering standards remain in [`.cursor/rules/`](../../../.cursor/rules/) and apply throughout the workflow.
+- Production migrate-on-deploy setup: [`setup-production-migrations`](../setup-production-migrations/SKILL.md).

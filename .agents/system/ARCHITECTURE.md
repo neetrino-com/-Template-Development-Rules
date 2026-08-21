@@ -52,6 +52,7 @@ Skill behavior remains in `SKILL.md`; catalog files do not duplicate workflow in
 │   ├── debug-first/
 │   ├── verify-before-completion/
 │   ├── safe-database-migration/
+│   ├── setup-production-migrations/
 │   └── figma-to-production/
 ├── library/
 │   ├── code-review/

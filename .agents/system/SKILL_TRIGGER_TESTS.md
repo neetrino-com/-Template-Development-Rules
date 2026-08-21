@@ -73,6 +73,25 @@ These routing cases review Skill descriptions for clear positive and negative bo
 | “Optimize this read query without changing the schema.” | No `safe-database-migration` | Ordinary query work. |
 | “Explain what a database transaction is.” | No `safe-database-migration` | Explanation-only request. |
 | “Run the pending migration in production now.” | `safe-database-migration` (stop before execution) | The workflow must enforce explicit production authorization. |
+| “Stop applying production migrations from our laptops; wire migrate-on-deploy for Vercel.” | `setup-production-migrations` | Pipeline setup, not schema design. |
+
+## setup-production-migrations
+
+### Positive
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Stop applying production migrations from our laptops; wire migrate-on-deploy for Vercel.” | `setup-production-migrations` | Local-to-production practice must become a deploy job. |
+| “Add a Cloud Run Job that runs `prisma migrate deploy` before the new service revision.” | `setup-production-migrations` | Host-specific production migration job. |
+| “Our Coolify app migrates on container startup. Move that to a one-shot migrator.” | `setup-production-migrations` | Unsafe runtime migrations need a job owner. |
+
+### Negative
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Make `customer.email` required without losing existing rows.” | `safe-database-migration` | Schema-change planning, job already assumed. |
+| “Explain what Prisma migrate deploy does.” | No `setup-production-migrations` | Explanation-only request. |
+| “Add a nullable column to the local development schema.” | `safe-database-migration` | Ordinary schema change. |
 
 ## figma-to-production
 

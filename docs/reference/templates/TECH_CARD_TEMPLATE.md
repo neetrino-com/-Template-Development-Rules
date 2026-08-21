@@ -74,6 +74,7 @@
 | 4.8 | Seed data | պետք չէ / prisma db seed | ⬜ | dev/test-ի համար |
 | 4.9 | Cache (Redis) | պետք չէ / Upstash Redis | ⬜ | |
 | 4.10 | Հերթեր | պետք չէ / BullMQ + Redis | ⬜ | |
+| 4.11 | Production migrations | CI job / Cloud Run Job / Coolify migrator | ⬜ | local-ը չի օգտագործում prod DB |
 
 ---
 
@@ -83,10 +84,12 @@
 |---|----------|---------|---------|-------|
 | 5.1 | Լուծում | Auth.js 5.x / Clerk (Core 3) | ⬜ | Auth.js — ստանդարտ; Clerk Core 3 — Node 20.9+ |
 | 5.2 | Մատակարարներ | GitHub, Google, Email... | ⬜ | |
-| 5.3 | Սեսիաների ստրատեգիա | JWT / Database sessions | ⬜ | |
+| 5.3 | Սեսիաների ստրատեգիա | Database sessions / JWT / այլ | ⬜ | |
 | 5.4 | Դերեր / RBAC | պետք չէ / USER, ADMIN, ... | ⬜ | |
 | 5.5 | Email վերահաստատում | պետք չէ / պետք է | ⬜ | ազդում է email-սերվիսի վրա |
 | 5.6 | Գաղտնաբառի վերականգնում | պետք չէ / պետք է | ⬜ | եթե Credentials provider |
+
+Ընտրության սկզբունք. A/B չափի ամբողջական Next.js web նախագծի համար նախընտրել Database sessions։ Եթե կա կամ նախատեսվում է mobile app կամ անկախ API client, նախընտրել JWT, իսկ այլ դեպքերում ընտրությունը հիմնավորել նախագծի պահանջներով։
 
 ---
 
@@ -131,6 +134,7 @@
 | 8.8 | Շրջակա միջավայրեր | միայն prod / dev + prod / dev + staging + prod | ⬜ | Neon branches, Vercel env |
 | 8.9 | Դոմեն | Vercel ավտո / անհատական դոմեն | ⬜ | ազդում է CORS, AUTH_URL-ի վրա |
 | 8.10 | ԲԴ բեքափներ | Neon auto (PITR) / լրացուցիչ | ⬜ | |
+| 8.11 | Migration job | GitHub Actions / Cloud Run Job / Coolify one-shot | ⬜ | `DIRECT_URL` միայն job-ում |
 
 ---
 
@@ -207,7 +211,7 @@
 |---|----------|---------|
 | 12.13 | Production դեպլոյը աշխատում է | ⬜ |
 | 12.14 | Environment variables հոսթինգում կարգավորված | ⬜ |
-| 12.15 | Միգրացիաներ կիրառված production-ում | ⬜ |
+| 12.15 | Production migrations-ը կիրառվում են deploy job-ով, ոչ նոութբուքից | ⬜ |
 | 12.16 | Դոմեն կարգավորված (եթե անհատական) | ⬜ |
 | 12.17 | SSL-ը աշխատում է | ⬜ |
 

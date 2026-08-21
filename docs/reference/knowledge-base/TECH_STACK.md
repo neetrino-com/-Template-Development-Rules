@@ -60,7 +60,6 @@
 | **Validation** | class-validator | 0.14.x | DTO վալիդացիա |
 | **Transform** | class-transformer | 0.5.x | Տրանսֆորմացիա |
 | **Auth** | Passport | 0.7.x | Ինքնություն հաստատում |
-| **JWT** | @nestjs/jwt | 10.x | JWT tokens |
 | **Swagger** | @nestjs/swagger | 7.x | API փաստաթղթավորում |
 | **Config** | @nestjs/config | 3.x | Կոնֆիգուրացիա |
 | **Cache** | @nestjs/cache-manager | 2.x | Cache |

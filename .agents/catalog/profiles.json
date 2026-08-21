@@ -27,7 +27,8 @@
         "core"
       ],
       "skills": [
-        "safe-database-migration"
+        "safe-database-migration",
+        "setup-production-migrations"
       ]
     },
     "security-sensitive": {

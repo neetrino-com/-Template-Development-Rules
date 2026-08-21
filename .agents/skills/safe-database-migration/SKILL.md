@@ -1,6 +1,6 @@
 ---
 name: safe-database-migration
-description: Plan, create and validate safe relational database schema changes and migrations. Use when modifying Prisma or database schemas, adding or removing columns, tables, indexes, constraints or relations, changing data types, or preparing database migrations. Do not use for ordinary application queries that do not change schema.
+description: Plan, create and validate safe relational database schema changes and migrations. Use when modifying Prisma or database schemas, adding or removing columns, tables, indexes, constraints or relations, changing data types, or preparing database migrations. Do not use for ordinary queries that leave the schema unchanged, or for wiring production migrate-on-deploy jobs.
 ---
 
 # Safe database migration
@@ -15,7 +15,7 @@ Use for relational schema changes, generated migrations, backfills coupled to sc
 
 ## Do not use when
 
-Do not use for ordinary queries that leave schema unchanged or for direct production execution without explicit authorization.
+Do not use for ordinary queries that leave the schema unchanged, for direct production execution without explicit authorization, or for setting up the production migrate-on-deploy job. Use [`setup-production-migrations`](../setup-production-migrations/SKILL.md) for that pipeline work.
 
 ## Inputs
 
@@ -31,9 +31,9 @@ Read database documentation, `docs/TECH_CARD.md` when present, ORM or migration 
 6. Define rollback or forward-fix handling. Prefer expand-and-contract for risky production changes.
 7. Generate the migration with the project's tooling.
 8. Inspect generated SQL or the framework's equivalent operations when available; do not trust generation blindly.
-9. Test in a safe local or test environment with representative data when practical.
+9. Test in a safe local or test environment with representative data when practical. Do not point local env at production to apply the migration.
 10. Validate the schema/client artifacts and affected application behavior.
-11. Document deployment ordering, backfill steps, monitoring, and remaining risk.
+11. Document deployment ordering, backfill steps, monitoring, and remaining risk. Production application belongs to the project's deploy job, not a laptop.
 
 ## Verification
 

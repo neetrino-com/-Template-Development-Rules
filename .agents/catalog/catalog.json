@@ -50,6 +50,18 @@
       "risk": "high"
     },
     {
+      "name": "setup-production-migrations",
+      "category": "database",
+      "state": "active",
+      "origin": "internal",
+      "path": ".agents/skills/setup-production-migrations",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "high"
+    },
+    {
       "name": "figma-to-production",
       "category": "frontend",
       "state": "active",

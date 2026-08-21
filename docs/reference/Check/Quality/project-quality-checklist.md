@@ -81,6 +81,8 @@
 
 - [ ] Prisma սխեման արդի է
 - [ ] Միգրացիաներ աշխատում են (up/down)
+- [ ] Լոկալ `.env`-ը չի օգտագործում Production database
+- [ ] Production migrations-ը աշխատում են deploy job-ով (`db:migrate:deploy`), ոչ startup-ից և ոչ նոութբուքից
 - [ ] Ինդեքսներ հաճախակի հարցումների համար
 - [ ] N+1 խնդիրներ չկան (`include` օգտագործվում է)
 - [ ] Transaction-ներ կապված գործողությունների համար
@@ -125,9 +127,9 @@
   - [ ] `.env.example` առանց արժեքների
 - [ ] **Աուտենտիֆիկացիա.**
   - [ ] Գաղտնաբառերը hash արված (argon2)
-  - [ ] JWT ճիշտ կարգավորված է
-  - [ ] Access token կարճ (15m)
-  - [ ] Refresh token ԲԴ-ում
+  - [ ] Provider-ը և session strategy-ն համապատասխանում են TECH_CARD-ին
+  - [ ] Session/token TTL-ը, rotation-ը և invalidation-ը կարգավորված են
+  - [ ] Logout-ից հետո session/token-ը այլևս վավեր չէ
 - [ ] **Աուտորիզացիա.**
   - [ ] RBAC իրականացված է
   - [ ] Guards-ը ստուգում են իրավունքները
@@ -138,7 +140,7 @@
   - [ ] XSS պաշտպանություն (sanitization)
   - [ ] CSRF պաշտպանություն
   - [ ] CORS ճիշտ կարգավորված է
-- [ ] **Cookies.**
+- [ ] **Cookies (եթե cookie-based auth է).**
   - [ ] `httpOnly: true`
   - [ ] `secure: true`
   - [ ] `sameSite: 'strict'`
@@ -262,6 +264,8 @@
   - [ ] Staging environment
   - [ ] Production deploy
   - [ ] Database migrations
+    - [ ] Մի job exact commit-ից. failure-ը կանգնեցնում է rollout-ը
+    - [ ] `DIRECT_URL` միայն migration job-ում, ոչ runtime-ում
 - [ ] **Feature Flags (եթե կան).**
   - [ ] Փաստաթղթավորված են
   - [ ] Kill switch-ը աշխատում է
@@ -541,6 +545,8 @@
 - [ ] Начальная схема создана
 - [ ] Neon подключён (если используется)
 - [ ] `app_user` создан (см. 06-database)
+- [ ] Локальный `.env` не указывает на production
+- [ ] Production migrations запускаются deploy job-ом, не с ноутбука
 
 ## Хранилище файлов
 - [ ] Cloudflare R2 подключён (env vars заполнены)

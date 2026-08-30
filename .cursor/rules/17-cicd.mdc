@@ -16,4 +16,4 @@ alwaysApply: false
 - **Feature flags:** document each flag; remove after full rollout; log which variant served.
 - **Dependency policy:** patch quickly; minor after changelog review; major as planned work with tests.
 
-**Templates:** [`ci-quality.yml.example`](../../docs/reference/workflows/ci-quality.yml.example), [production migrations](../../docs/reference/workflows/production-database-migrations.md). Extended patterns previously in this file now belong in `docs/reference/` or team docs — keep `.mdc` lean.
+**Templates:** [`ci-quality.yml.example`](../../docs/reference/workflows/ci-quality.yml.example), [production migrations](../../docs/reference/workflows/production-database-migrations.md), [Vercel Git: `main` only](../../docs/reference/workflows/vercel-git-deployments.md). Extended patterns previously in this file now belong in `docs/reference/` or team docs — keep `.mdc` lean.
